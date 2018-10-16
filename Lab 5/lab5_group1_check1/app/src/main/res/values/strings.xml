@@ -1,0 +1,13 @@
+<resources>
+	<string name="app_name">IoT - Lab 5</string>
+	<string name="info">Press on the Mic icon and say one of these commands:\n
+	1) Turn off the display\n
+	2) Turn on the display\n
+	3) Display the time\n
+	* Other spoken messages will show on the OLED display\n
+	</string>
+    <string name="server_address">Server address:</string>
+	<string name="enter_ip">Enter IP</string>
+	<string name="enter_port">Enter PORT</string>
+
+</resources>
