@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SPoutlet</string>
+    <string name="info">Press the info icon to get the current state\n
+	</string>
+    <string name="server_address">Server address:</string>
+    <string name="enter_ip">Enter IP</string>
+    <string name="enter_port">Enter PORT</string>
+
+    <string name="enter_code">Enter User Code</string>
+
+</resources>
