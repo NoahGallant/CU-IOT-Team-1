@@ -1,0 +1,292 @@
+<!DOCTYPE HTML>
+<!--
+	Prologue by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html> 
+	<head>
+		<title>Columbia University EECS E4764 IoT Project Report #1</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Header -->
+			<div id="header">
+
+				<div class="top">
+
+					<!-- Logo -->
+						<div id="logo">
+							<!-- <span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span> -->
+							<h1 id="title">Public Outlet Project</h1>
+							<p>Columbia University <br>
+								EECS E4764 Fall'18 Internet of Things<br>
+								Intelligent and Connected Systems<br>
+								Team 1 Project Report
+							</p>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<!--
+
+								Prologue's nav expects links in one of two formats:
+
+								1. Hash link (scrolls to a different section within the page)
+
+								   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
+
+								2. Standard link (sends the user to another page/site)
+
+								   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
+
+							-->
+							<ul>
+								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Abstract</span></a></li>
+								<li><a href="#motivation" id="motivation-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Motivation</span></a></li>
+								<li><a href="#system" id="system-link" class="skel-layers-ignoreHref"><span class="icon fa-th">System</span></a></li>
+								<li><a href="#results" id="results-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Results</span></a></li>
+								<li><a href="#references" id="references-link" class="skel-layers-ignoreHref"><span class="icon fa-th">References</span></a></li>
+								<li><a href="#team" id="team-link" class="skel-layers-ignoreHref"><span class="icon fa-user">Our Team</span></a></li>
+								<li><a href="#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact</span></a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+				<div class="bottom">
+
+					<!-- Social Icons -->
+						<ul class="icons">
+							<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+							<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+							<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+
+				</div>
+
+			</div>
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- Intro -->
+					<section id="top" class="one dark cover">
+						<div class="container">
+
+								<iframe width="560" height="315" src="https://www.youtube.com/embed/vE9CNYQrWYg" frameborder="0" allowfullscreen></iframe>
+	
+								<h2 class="alt">Public Outlet Project</h2>
+								<p>The public outlet project is a smart outlet which enabels street-level storefronts to sell electricity to street cart vendors. Through a REST API, the "public" outlet connects to a vendor's smartphone through a server which can remotely control the state of the outlet. A vendor has allotted credits which give them access to a corresponding amount of Watt-hours of energy, which they can replenish.</p>
+								
+
+							<footer>
+								<a href="#motivation" class="button scrolly">Motivation</a>
+							</footer>
+
+						</div>
+					</section>
+
+				<!-- Portfolio -->
+					<section id="motivation" class="two">
+						<div class="container">
+
+							<header>
+								<h2>Motivation</h2>
+							</header>
+
+							<p align="left">In New York, publically accessible power is limited for street-vendors. Largely, vendors rely on gas generators for power for their carts which might serve food. These generators can be dangerous to operate and are growing more expensive to operate over time relative to the price of renewable energy. The motivation of the public outlet project is to allow street vendors to utilize the energy source of nearby businesses as a resource.</p>
+
+
+
+						</div>
+					</section>
+					
+					
+					<section id="system" class="three">
+						<div class="container">
+
+							<header>
+								<h2>System</h2>
+							</header>
+							
+							<p align="left">We leverage a REST-based architecture with three main technical components: the server, the smartphone and the relay point.</p>
+							
+							<h3 align="left">Architecture</h3>
+
+							<p align="left">
+								The operation of the device is simple. A customer using the service would be given a NFC card and an account. They then pair the card with their phone, and the server stores the card info as part of the account information. The card allows for use by multiple employees who might not have access to the account information. When ready to use the outlet, the user must trigger that they are ready to pair from the app. The outlet is constantly looking for an NFC card, and once it sees one it will send the card ID to the server. If the server recognizes that the card ID belongs to the account attempting to pair with the outlet, it will turn the outlet on and begin energy monitoring.
+								<br/><br/>
+								<img src='images/diagram-1.jpeg' width='100%'/>
+								<br/><br/>
+								The cumulated amount of energy used is shown on the screen of the device and sent back to the server, which will then send the usage to the user’s phone. The pre-paid credits in the account will decrement with energy usage and will be constantly updated. Based on a moving average of the energy use and the number of credits left in the user’s account, we calculate an estimated time remaining and display that on the device. We also display the amount of energy left in the account before the outlet turns off. If the user buys more credits while the device is running it will update the usage and display the new remaining amount and estimated time on the screen.
+								<br/><br/>
+								<img src='images/diagram-2.png' width='100%'/>
+								<br/><br/>
+								Once the credits run out the outlet will turn off and disconnect from the account. The pairing process must then start over to turn the outlet back on. If there are no credits in the account when a user tries to activate the outlet, it will not allow activation. 
+								There are 2 other ways that the device will disconnect from the user and require a repair. The user has the capability of turning off the relay remotely from the app. In addition the outlet will recognize if the device has been unplugged or turned off, and if it stops drawing power for 10 seconds the outlet will turn off and disconnect from the user.
+								<br/><br/>
+								The energy monitoring is done using a current transformer module, which steps down the current running through our AC line by 1000. For example, if we have 2A running through the line the transformer steps this down to 2mA. This is put through a 200 ohm resistor, and we take the voltage across this resistor and measure it using the ADC on the feather. This conversion is linear, with 0V measuring 0A and 1V measuring 5A. Because the current running through the line is AC, our measurement finds the maximum voltage, representing the amplitude of the signal, within a 100ms period and uses that for the calculation. This current measurement is non-rms, so after converting into an RMS current and multiplying by our AC voltage, we can find the instantaneous power of our line. Multiplying this power measurement by the time it was measured in gives us our energy use.
+							</p>
+							
+							
+							<h3 align="left">Technical Components</h3>
+
+							<img src='images/architecture.png' width='100%'/>
+							<p align="left">Our technical components are shown in our block diagram above.</p>
+
+							
+							<h3 align="left">Prototype</h3>
+							<img src='images/labeled-big.png' width='100%'/>
+							<img src='images/labeled-small.png' width='100%'/>
+							<p align="left">Our prototype is shown with labels of parts as above. The prototype has a single public outlet point and can handle multiple users.</p>
+							
+							
+							
+						</div>
+					</section>
+					
+					
+					<section id="results" class="two">
+						<div class="container">
+
+							<header>
+								<h2>Results</h2>
+							</header>
+
+							<p align="left">We were able to reliably satisfy our initial goals of having a user control the relay point from their phone according to the diagrams shown in <b>Architecture</b> with each of shut-off conditions functioning as expected (10 second turn-off, remote shut-off, run out of credits).</p>
+							<br/>
+							<p align="left">The power readings for a 45 Watt MacBook charger would ideally give a reading of 0.0125 Wh/s and we got an average reading of 0.0118 Wh/s which would imply an accuracy of 94% for the power consumption.</p>
+							
+						</div>
+					</section>
+					
+					<section id="references" class="three">
+						<div class="container">
+
+							<header>
+								<h2>References</h2>
+							</header>
+
+							<ul>
+								<li><a href=''>Data sheet for NFC chip</a></li>
+								<li><a href=''>Specification for Feather Huzzah</a></li>
+								<li><a href=''>Data sheet for relay</a></li>
+								<li><a href=''>Converter specification</a></li>
+							</ul>
+
+						</div>
+					</section>
+					
+
+				<!-- About Me -->
+					<section id="team" class="two">
+						<div class="container">
+
+							<header>
+								<h2>Our Team</h2>
+							</header>
+
+							<!-- <a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a> -->
+
+
+							<div class="row">
+								<div class="4u 12u$(mobile)">
+									<article class="item">
+										<a href="#" class="image fit"><img src="images/noah.jpg" alt="" /></a>
+										<header>
+											<h3>Noah Gallant</h3>
+											<p>Noah is an undergraduate senior studying Computer Science in the School of Engineering at Columbia. Find him online <a href='https://noah.engineer/'>here</a>.</p>
+										</header>
+									</article>
+								</div>
+								<div class="4u 12u$(mobile)">
+									<article class="item">
+										<a href="#" class="image fit"><img src="images/asher.jpg" alt="" /></a>
+										<header>
+											<h3>Asher Goldfinger</h3>
+											<p>Asher is an undergraduate senior studying Electrical Engineering in the School of Engineering at Columbia. Find him online <a href='https://www.linkedin.com/in/asher-goldfinger-731559a3/'>here</a></p>
+										</header>
+									</article>
+								</div>
+								<div class="4u$ 12u$(mobile)">
+									<article class="item">
+										<a href="#" class="image fit"><img src="images/guy.jpg" alt="" /></a>
+										<header>
+											<h3>Guy Farkash</h3>
+											<p>Guy is a Master's student in Electrical Engineering at Columbia University. Find him online <a href='https://flexicon.ee.columbia.edu/guy-farkash'>here</a>.</p>
+										</header>
+									</article>
+								</div>
+							</div>
+
+						</div>
+					</section>
+
+				<!-- Contact -->
+					<section id="contact" class="four">
+						<div class="container">
+
+							<header>
+								<h2>Contact</h2>
+							</header>
+
+							<p align="left">
+								<strong>Noah Gallant: </strong>nag2145@columbia.edu</br>
+								<strong>Guy Farkash: </strong>gf2373@columbia.edu</br>
+								<strong>Asher Goldfinger: </strong>asg2189@columbia.edu</br>
+							</br>
+								<strong>Columbia University </strong><a href="http://www.ee.columbia.edu">Department of Electrical Engineering</a><br>
+								<!-- <strong>Class Website:</strong>
+									<a href="https://edblogs.columbia.edu/eecs4764-001-2018-3/">Columbia University EECS E4764 Fall '18 IoT</a></br> -->
+								<strong>Instructor:</strong> <a href="http://fredjiang.com/">Professsor Xiaofan (Fred) Jiang</a>
+							</p>
+							
+
+							<!-- <form method="post" action="#">
+								<div class="row">
+									<div class="6u 12u$(mobile)"><input type="text" name="name" placeholder="Name" /></div>
+									<div class="6u$ 12u$(mobile)"><input type="text" name="email" placeholder="Email" /></div>
+									<div class="12u$">
+										<textarea name="message" placeholder="Message"></textarea>
+									</div>
+									<div class="12u$">
+										<input type="submit" value="Send Message" />
+									</div>
+								</div>
+							</form> -->
+
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<div id="footer">
+
+				<!-- Copyright -->
+					<ul class="copyright">
+						<li>&copy; IoT Project | All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollzer.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
